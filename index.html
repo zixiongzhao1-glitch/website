@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zixiong Zhao | Cellist</title>
+    <style>
+        /* 1. Core Styles */
+        :root {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --accent-gold: #c5a059;
+            --section-bg: #1e1e1e;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+
+        a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+
+        a:hover {
+            color: #fff;
+        }
+
+        /* 2. Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(18, 18, 18, 0.95);
+            border-bottom: 1px solid #333;
+            padding: 20px 0;
+            z-index: 1000;
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            font-weight: 700;
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
+        .menu a {
+            margin-left: 30px;
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+
+        .menu a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* 3. Hero Section (Top) */
+        header {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('photo1.png') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-attachment: fixed;
+        }
+
+        header h1 {
+            font-size: 4.5rem;
+            color: #fff;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            font-style: italic;
+        }
+
+        /* 4. Main Layout */
+        .content-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        /* 5. Introduction Section */
+        .intro {
+            text-align: center;
+            margin-bottom: 80px;
+            padding: 40px;
+            border: 1px solid var(--accent-gold);
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .intro p {
+            font-size: 1.2rem;
+            color: #fff;
+            margin: 0;
+        }
+
+        /* 6. Biography Section */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            color: var(--accent-gold);
+            display: block;
+        }
+
+        .bio-grid {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .bio-text {
+            text-align: justify;
+            font-size: 1.05rem;
+        }
+
+        .bio-text p {
+            margin-bottom: 20px;
+            color: #d0d0d0;
+        }
+
+        .bio-photo img {
+            width: 100%;
+            border-radius: 2px;
+            box-shadow: 10px 10px 0px var(--section-bg);
+            filter: grayscale(10%);
+        }
+
+        /* 7. Awards List (Clean & Full) */
+        .awards-section {
+            margin-top: 80px;
+            border-top: 1px solid #333;
+            padding-top: 60px;
+        }
+
+        .award-item {
+            border-left: 2px solid var(--accent-gold);
+            padding-left: 20px;
+            margin-bottom: 30px; 
+        }
+
+        .award-year {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-weight: bold;
+            color: var(--accent-gold);
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .award-desc {
+            display: block;
+            color: #e0e0e0;
+        }
+
+        /* 8. Footer */
+        footer {
+            background-color: var(--section-bg);
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+
+        .email-link {
+            font-size: 1.5rem;
+            border-bottom: 1px solid var(--accent-gold);
+            padding-bottom: 5px;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            header h1 { font-size: 3rem; }
+            .bio-grid { grid-template-columns: 1fr; }
+            .bio-photo { order: -1; margin-bottom: 20px; }
+            .nav-inner { padding: 0 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-inner">
+            <div class="logo">ZIXIONG ZHAO</div>
+            <div class="menu">
+                <a href="#biography">Biography</a>
+                <a href="#awards">Awards</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Zixiong Zhao</h1>
+        <p>Cellist</p>
+    </header>
+
+    <div class="content-wrapper">
+
+        <section class="intro">
+            <p>
+                My name is <strong>Zixiong Zhao</strong>. <br>
+                I am currently an undergraduate student majoring in Cello at the 
+                <strong>Hochschule für Musik, Theater und Medien Hannover</strong>.
+            </p>
+        </section>
+
+        <section id="biography">
+            <h2 class="section-title">Artist Biography</h2>
+            
+            <div class="bio-grid">
+                <div class="bio-text">
+                    <p>
+                        Born in 2005, Zixiong began studying the cello at the age of four with Feng Jun. In 2016, he commenced formal studies with Prof. Yu Mingqing from the Central Conservatory of Music, and continued in 2017 under Assoc. Prof. Zhu Mu. In 2018, he was admitted to the Affiliated Middle School of the Central Conservatory of Music with the third-highest entrance score, where he studied with Prof. Yang Meng.
+                    </p>
+                    <p>
+                        In 2024, he entered the Hochschule für Musik, Theater und Medien Hannover to study with Prof. Leonid Gorokhov.
+                    </p>
+                    <p>
+                        Zixiong has won numerous international awards throughout his career. He began his competition journey in 2010, securing Second Prize (Group F) at the 4th “Ai Qin Bei” Cello Competition. In 2017, he achieved First Prize (Group D) and First Prize for Performance of Chinese Repertoire at the 7th “Ai Qin Bei” International Cello Competition. In 2019, he was awarded Fourth Prize in the Junior Division at the 1st “Cello Family” International Cello Competition.
+                    </p>
+                    <p>
+                        In 2021, Zixiong’s success extended internationally: he won First Prize (ages 16–18) at the Golden Classical Music Awards International Competition in New York and was invited to perform at the winners’ concert at Carnegie Hall the following year. The same month, he received Second Prize (Group 7) at the 3rd Czech “Gustav Mahler Prize” Cello Competition. He continued to achieve top honors in subsequent months, including First Prize in the Cello Category at the “Golden Strings of Bulgaria” Competition, First Prize (Solo Strings Group D) at Italy’s Città di Massa Competition, and the Gold Award (Cello Open Group B) at the 2021 Vienna Golden Hall Strings Invitational.
+                    </p>
+                    <p>
+                        In 2022, Zixiong’s achievements continued with First Prize and a Gold Medal (ages 16–18) at the 12th “Dresden Winter Stars” International Competition and Festival, and First Prize (Strings Group D) at the 11th “Giuseppe Raciti Memorial” International Music Competition in Italy. As the cellist of the “Untitled(Wu Ti)” String Quartet, he won First Prize in both the Beijing Division and National Finals of the 7th Hummingbird Music Competition, First Prize in the Youth Ensemble category at the Vienna Golden Hall Strings Invitational, and the Bronze Award (Professional Group) at the CMIA International Chamber Music Festival and Chinese Musicians Association Cup Western Instruments Chamber Ensemble Showcase.
+                    </p>
+                    <p>
+                        Zixiong has also gained extensive performance experience. In 2019, he performed under the guidance of Prof. Yang Meng at the National Centre for the Performing Arts in Beijing in a concert entitled "Appreciation of Cello Works in Different Styles". In November 2024, he participated in a performance of Beethoven’s Symphony No. 9 under the baton of Eiji Oue at the Hochschule für Musik, Theater und Medien Hannover. In June 2025, he performed as a member of the HMTM Hochschulorchester in "The Unanswered Question", conducted by Ingo Metzmacher with the NDR Radiophilharmonie at Kuppelsaal, and later that month took part in the premiere of the opera AI−Cina.
+                    </p>
+                    <p>
+                        He has also attended masterclasses with prominent cellists from China and abroad, including Lynn Harrell, Matti Rossi, Philippe Muller, Michel Strauss, Gavriel Lipkind, Wang Jian, and Qin Liwei, receiving high praise from all experts.
+                    </p>
+                    <p>
+                        Zixiong’s combination of international competition success and diverse performance experience demonstrates his dedication, versatility, and artistry as a young cellist, positioning him as a promising talent on the global stage.
+                    </p>
+                </div>
+                <div class="bio-photo">
+                    <img src="photo2.png" alt="Zixiong Zhao">
+                </div>
+            </div>
+        </section>
+
+        <section class="awards-section" id="awards">
+            <h2 class="section-title">Honors & Awards</h2>
+            
+            <div class="award-item">
+                <span class="award-year">2022</span>
+                <span class="award-desc">First Prize & Gold Medal (Ages 16–18), 12th "Dresden Winter Stars" International Competition</span>
+            </div>
+
+            <div class="award-item">
+                <span class="award-year">2022</span>
+                <span class="award-desc">First Prize (Strings Group D), 11th "Giuseppe Raciti Memorial" International Music Competition, Italy</span>
+            </div>
+
+            <div class="award-item">
+                <span class="award-year">2021</span>
+                <span class="award-desc">First Prize (Ages 16–18), Golden Classical Music Awards International Competition (New York)</span>
+            </div>
+
+            <div class="award-item">
+                <span class="award-year">2021</span>
+                <span class="award-desc">Second Prize (Group 7), 3rd Czech “Gustav Mahler Prize” Cello Competition</span>
+            </div>
+
+            <div class="award-item">
+                <span class="award-year">2021</span>
+                <span class="award-desc">First Prize (Cello Category), “Golden Strings of Bulgaria” Competition</span>
+            </div>
+
+            <div class="award-item">
+                <span class="award-year">2021</span>
+                <span class="award-desc">First Prize (Solo Strings Group D), Città di Massa Competition, Italy</span>
+            </div>
+
+            <div class="award-item">
+                <span class="award-year">2021</span>
+                <span class="award-desc">Gold Award (Cello Open Group B), Vienna Golden Hall Strings Invitational</span>
+            </div>
+
+            <div class="award-item">
+                <span class="award-year">2021 (Chamber Music)</span>
+                <span class="award-desc">First Prize (Beijing Division & National Finals), 7th Hummingbird Music Competition</span>
+            </div>
+
+            <div class="award-item">
+                <span class="award-year">2021 (Chamber Music)</span>
+                <span class="award-desc">First Prize (Youth Ensemble), Vienna Golden Hall Strings Invitational</span>
+            </div>
+
+            <div class="award-item">
+                <span class="award-year">2021 (Chamber Music)</span>
+                <span class="award-desc">Bronze Award (Professional Group), CMIA International Chamber Music Festival</span>
+            </div>
+
+            <div class="award-item">
+                <span class="award-year">2019</span>
+                <span class="award-desc">Fourth Prize (Junior Division), 1st “Cello Family” International Cello Competition</span>
+            </div>
+
+            <div class="award-item">
+                <span class="award-year">2017</span>
+                <span class="award-desc">First Prize (Group D) & First Prize (Chinese Repertoire), 7th “Ai Qin Bei” International Cello Competition</span>
+            </div>
+
+            <div class="award-item">
+                <span class="award-year">2010</span>
+                <span class="award-desc">Second Prize (Group F), 4th “Ai Qin Bei” Cello Competition</span>
+            </div>
+        </section>
+
+    </div>
+
+    <footer id="contact">
+        <h2 style="color: #fff; margin-bottom: 20px;">Contact</h2>
+        <a href="mailto:zixiongzhao1@gmail.com" class="email-link">zixiongzhao1@gmail.com</a>
+        <br><br>
+        <p style="color: #666; font-size: 0.8rem;">&copy; 2025 Zixiong Zhao</p>
+    </footer>
+
+</body>
+</html>
