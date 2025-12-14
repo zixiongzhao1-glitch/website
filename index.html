@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Official website of cellist Zixiong Zhao | 赵梓雄个人主页">
     <title>Zixiong Zhao | Cellist</title>
     <style>
-        /* 1. Core Styles */
+        /* --- 1. Core Styles --- */
         :root {
             --bg-color: #121212;
             --text-color: #e0e0e0;
@@ -13,14 +14,31 @@
             --section-bg: #1e1e1e;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Georgia', serif;
+            font-family: 'Georgia', 'Times New Roman', 'Songti SC', 'SimSun', serif;
             margin: 0;
             padding: 0;
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.8;
         }
+
+        /* --- 语言切换核心逻辑 --- */
+        .lang-zh { display: none; }
+        
+        /* 英文模式: 强制隐藏中文 */
+        body.en-mode .lang-zh { display: none !important; }
+        body.en-mode .lang-en { display: block; }
+        body.en-mode span.lang-en { display: inline; } 
+
+        /* 中文模式: 强制隐藏英文 */
+        body.zh-mode .lang-en { display: none !important; }
+        body.zh-mode .lang-zh { display: block; }
+        body.zh-mode span.lang-zh { display: inline; } 
 
         h1, h2, h3 {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -39,15 +57,15 @@
             color: #fff;
         }
 
-        /* 2. Navigation */
+        /* --- 2. Navigation (导航栏) --- */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(18, 18, 18, 0.95);
+            background: rgba(18, 18, 18, 0.98); /* 增加不透明度，防止背景干扰 */
             border-bottom: 1px solid #333;
-            padding: 20px 0;
-            z-index: 1000;
+            padding: 15px 0;
+            z-index: 9999; /* 确保层级最高，处于最顶层 */
         }
 
         .nav-inner {
@@ -63,19 +81,45 @@
             font-weight: 700;
             color: #fff;
             font-size: 1.2rem;
+            letter-spacing: 1px;
+            white-space: nowrap; /* 防止名字换行 */
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
         }
 
         .menu a {
             margin-left: 30px;
             font-size: 0.9rem;
             color: #bbb;
+            cursor: pointer;
+            position: relative; /* 确保点击区域正确 */
+            z-index: 10000;
         }
 
         .menu a:hover {
             color: var(--accent-gold);
         }
 
-        /* 3. Hero Section (Top) */
+        /* 语言按钮样式 */
+        .lang-switch-btn {
+            margin-left: 30px;
+            border: 1px solid var(--accent-gold);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--accent-gold) !important;
+            user-select: none;
+            cursor: pointer;
+        }
+        .lang-switch-btn:hover {
+            background: var(--accent-gold);
+            color: #000 !important;
+        }
+
+        /* --- 3. Hero Section --- */
         header {
             height: 100vh;
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('photo1.png') no-repeat center center/cover;
@@ -85,6 +129,7 @@
             align-items: center;
             text-align: center;
             background-attachment: fixed;
+            padding-top: 60px; /* 防止内容被导航栏遮挡 */
         }
 
         header h1 {
@@ -100,14 +145,13 @@
             font-style: italic;
         }
 
-        /* 4. Main Layout */
+        /* --- 4. Content Styles --- */
         .content-wrapper {
             max-width: 1000px;
             margin: 0 auto;
             padding: 80px 20px;
         }
 
-        /* 5. Introduction Section */
         .intro {
             text-align: center;
             margin-bottom: 80px;
@@ -115,14 +159,9 @@
             border: 1px solid var(--accent-gold);
             background-color: rgba(255, 255, 255, 0.02);
         }
+        .intro p { font-size: 1.2rem; color: #fff; margin: 0; }
 
-        .intro p {
-            font-size: 1.2rem;
-            color: #fff;
-            margin: 0;
-        }
-
-        /* 6. Biography Section */
+        /* Biography */
         .section-title {
             text-align: center;
             font-size: 2rem;
@@ -138,15 +177,8 @@
             align-items: start;
         }
 
-        .bio-text {
-            text-align: justify;
-            font-size: 1.05rem;
-        }
-
-        .bio-text p {
-            margin-bottom: 20px;
-            color: #d0d0d0;
-        }
+        .bio-text { text-align: left; font-size: 1.05rem; }
+        .bio-text p { margin-bottom: 20px; color: #d0d0d0; }
 
         .bio-photo img {
             width: 100%;
@@ -155,19 +187,11 @@
             filter: grayscale(10%);
         }
 
-        /* 7. Awards List (Clean & Full) */
-        .awards-section {
-            margin-top: 80px;
-            border-top: 1px solid #333;
-            padding-top: 60px;
-        }
-
-        .award-item {
-            border-left: 2px solid var(--accent-gold);
-            padding-left: 20px;
-            margin-bottom: 30px; 
-        }
-
+        /* Awards */
+        .awards-section { margin-top: 80px; border-top: 1px solid #333; padding-top: 60px; }
+        .awards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .award-item { border-left: 2px solid var(--accent-gold); padding-left: 20px; }
+        
         .award-year {
             font-family: 'Helvetica Neue', sans-serif;
             font-weight: bold;
@@ -176,92 +200,158 @@
             margin-bottom: 5px;
             font-size: 1.1rem;
         }
-        
-        .award-desc {
-            display: block;
-            color: #e0e0e0;
-        }
+        .award-desc { color: #e0e0e0; line-height: 1.4; }
 
-        /* 8. Footer */
+        /* Footer */
         footer {
             background-color: var(--section-bg);
             padding: 60px 20px;
             text-align: center;
             border-top: 1px solid #333;
         }
+        .email-link { font-size: 1.5rem; border-bottom: 1px solid var(--accent-gold); padding-bottom: 5px; }
 
-        .email-link {
-            font-size: 1.5rem;
-            border-bottom: 1px solid var(--accent-gold);
-            padding-bottom: 5px;
-        }
-        
-        /* Mobile Responsive */
+        /* --- Mobile Responsive (重点修改部分) --- */
         @media (max-width: 768px) {
-            header h1 { font-size: 3rem; }
+            header { background-attachment: scroll; } /* 修复iOS背景卡顿 */
+            header h1 { font-size: 2.5rem; padding: 0 10px; }
+            
+            /* 导航栏手机端大改版 */
+            nav { padding: 15px 0; }
+            .nav-inner {
+                flex-direction: column; /* 上下排列 */
+                padding: 0 20px;
+            }
+            .logo {
+                margin-bottom: 15px; /* 名字和菜单拉开距离 */
+                font-size: 1.4rem;
+            }
+            .menu {
+                width: 100%;
+                justify-content: center; /* 菜单居中 */
+                flex-wrap: wrap; /* 允许换行，以防万一 */
+            }
+            .menu a {
+                margin: 0 10px; /* 调整间距 */
+                font-size: 0.85rem; /* 字体稍微改小 */
+                margin-left: 0; /* 重置左边距 */
+                padding: 5px; /* 增加点击区域 */
+            }
+            .lang-switch-btn {
+                margin-left: 10px; /* 调整按钮间距 */
+                margin-top: 0;
+            }
+
+            /* 其他布局调整 */
             .bio-grid { grid-template-columns: 1fr; }
-            .bio-photo { order: -1; margin-bottom: 20px; }
-            .nav-inner { padding: 0 20px; }
+            .bio-photo { order: -1; margin-bottom: 30px; }
+            .awards-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
-<body>
-
-    <nav>
+<body class="en-mode"> <nav>
         <div class="nav-inner">
-            <div class="logo">ZIXIONG ZHAO</div>
+            <div class="logo">
+                <span class="lang-en">ZIXIONG ZHAO</span>
+                <span class="lang-zh">赵梓雄</span>
+            </div>
             <div class="menu">
-                <a href="#biography">Biography</a>
-                <a href="#awards">Awards</a>
-                <a href="#contact">Contact</a>
+                <a href="#biography">
+                    <span class="lang-en">Biography</span>
+                    <span class="lang-zh">简介</span> </a>
+                <a href="#awards">
+                    <span class="lang-en">Awards</span>
+                    <span class="lang-zh">奖项</span> </a>
+                <a href="#contact">
+                    <span class="lang-en">Contact</span>
+                    <span class="lang-zh">联系</span> </a>
+                <div class="lang-switch-btn" onclick="toggleLanguage()">
+                    <span class="lang-en">中文</span>
+                    <span class="lang-zh">EN</span>
+                </div>
             </div>
         </div>
     </nav>
 
     <header>
-        <h1>Zixiong Zhao</h1>
-        <p>Cellist</p>
+        <h1>
+            <span class="lang-en">Zixiong Zhao</span>
+            <span class="lang-zh">赵梓雄</span>
+        </h1>
+        <p>
+            <span class="lang-en">Cellist</span>
+            <span class="lang-zh">大提琴演奏家</span>
+        </p>
     </header>
 
     <div class="content-wrapper">
 
         <section class="intro">
-            <p>
-                My name is <strong>Zixiong Zhao</strong>. <br>
-                I am currently study Cello for Bachelor at the 
+            <p class="lang-en">
+                My name is <strong>Zixiong Zhao</strong>.<br>
+                I am currently studying Cello for my Bachelor's degree at the 
                 <strong>Hochschule für Musik, Theater und Medien Hannover</strong>.
+            </p>
+            <p class="lang-zh">
+                我是<strong>赵梓雄</strong>。<br>
+                目前就读于<strong>德国汉诺威音乐、戏剧与媒体学院</strong>，<br>攻读大提琴演奏学士学位。
             </p>
         </section>
 
         <section id="biography">
-            <h2 class="section-title">Artist Biography</h2>
+            <h2 class="section-title">
+                <span class="lang-en">Artist Biography</span>
+                <span class="lang-zh">艺术家简介</span>
+            </h2>
             
             <div class="bio-grid">
                 <div class="bio-text">
-                    <p>
-                        Born in 2005, Zixiong began studying the cello at the age of four with Feng Jun. In 2016, he commenced formal studies with Prof. Yu Mingqing from the Central Conservatory of Music, and continued in 2017 under Assoc. Prof. Zhu Mu. In 2018, he was admitted to the Affiliated Middle School of the Central Conservatory of Music with the third-highest entrance score, where he studied with Prof. Yang Meng.
-                    </p>
-                    <p>
-                        In 2024, he entered the Hochschule für Musik, Theater und Medien Hannover to study with Prof. Leonid Gorokhov.
-                    </p>
-                    <p>
-                        Zixiong has won numerous international awards throughout his career. He began his competition journey in 2010, securing Second Prize (Group F) at the 4th “Ai Qin Bei” Cello Competition. In 2017, he achieved First Prize (Group D) and First Prize for Performance of Chinese Repertoire at the 7th “Ai Qin Bei” International Cello Competition. In 2019, he was awarded Fourth Prize in the Junior Division at the 1st “Cello Family” International Cello Competition.
-                    </p>
-                    <p>
-                        In 2021, Zixiong’s success extended internationally: he won First Prize (ages 16–18) at the Golden Classical Music Awards International Competition in New York and was invited to perform at the winners’ concert at Carnegie Hall the following year. The same month, he received Second Prize (Group 7) at the 3rd Czech “Gustav Mahler Prize” Cello Competition. He continued to achieve top honors in subsequent months, including First Prize in the Cello Category at the “Golden Strings of Bulgaria” Competition, First Prize (Solo Strings Group D) at Italy’s Città di Massa Competition, and the Gold Award (Cello Open Group B) at the 2021 Vienna Golden Hall Strings Invitational.
-                    </p>
-                    <p>
-                        In 2022, Zixiong’s achievements continued with First Prize and a Gold Medal (ages 16–18) at the 12th “Dresden Winter Stars” International Competition and Festival, and First Prize (Strings Group D) at the 11th “Giuseppe Raciti Memorial” International Music Competition in Italy. As the cellist of the “Untitled(Wu Ti)” String Quartet, he won First Prize in both the Beijing Division and National Finals of the 7th Hummingbird Music Competition, First Prize in the Youth Ensemble category at the Vienna Golden Hall Strings Invitational, and the Bronze Award (Professional Group) at the CMIA International Chamber Music Festival and Chinese Musicians Association Cup Western Instruments Chamber Ensemble Showcase.
-                    </p>
-                    <p>
-                        Zixiong has also gained extensive performance experience. In 2019, he performed under the guidance of Prof. Yang Meng at the National Centre for the Performing Arts in Beijing in a concert entitled "Appreciation of Cello Works in Different Styles". In November 2024, he participated in a performance of Beethoven’s Symphony No. 9 under the baton of Eiji Oue at the Hochschule für Musik, Theater und Medien Hannover. In June 2025, he performed as a member of the HMTM Hochschulorchester in "The Unanswered Question", conducted by Ingo Metzmacher with the NDR Radiophilharmonie at Kuppelsaal, and later that month took part in the premiere of the opera AI−Cina.
-                    </p>
-                    <p>
-                        He has also attended masterclasses with prominent cellists from China and abroad, including Lynn Harrell, Matti Rossi, Philippe Muller, Michel Strauss, Gavriel Lipkind, Wang Jian, and Qin Liwei, receiving high praise from all experts.
-                    </p>
-                    <p>
-                        Zixiong’s combination of international competition success and diverse performance experience demonstrates his dedication, versatility, and artistry as a young cellist, positioning him as a promising talent on the global stage.
-                    </p>
+                    
+                    <div class="lang-en">
+                        <p>
+                            Born in 2005, Zixiong began studying the cello at the age of four with Feng Jun. In 2016, he commenced formal studies with Prof. Yu Mingqing from the Central Conservatory of Music (CCOM), and continued in 2017 under Assoc. Prof. Zhu Mu. In 2018, he was admitted to the CCOM Affiliated Middle School with outstanding scores, where he studied with Prof. Yang Meng.
+                        </p>
+                        <p>
+                            In 2024, he entered the Hochschule für Musik, Theater und Medien Hannover to study with Prof. Leonid Gorokhov.
+                        </p>
+                        <p>
+                            Zixiong has won numerous international awards. His journey began in 2010 with a Second Prize at the 4th "Ai Qin Bei" Cello Competition. Later achievements include First Prize at the 7th "Ai Qin Bei" International Competition (2017) and Fourth Prize at the 1st "Cello Family" International Competition (2019).
+                        </p>
+                        <p>
+                            His international success grew in 2021, winning First Prize at the Golden Classical Music Awards (New York), leading to an invitation to perform at Carnegie Hall. That same year, he won prizes at the Czech "Gustav Mahler Prize" Competition, "Golden Strings of Bulgaria", Italy's Città di Massa Competition, and the Vienna Golden Hall Strings Invitational.
+                        </p>
+                        <p>
+                            In 2022, he received the Gold Medal at the "Dresden Winter Stars" and First Prize at the "Giuseppe Raciti Memorial" in Italy. As cellist of the "Untitled (Wu Ti)" String Quartet, he won First Prize at the 7th Hummingbird Music Competition and awards at the CMIA Chamber Music Festival.
+                        </p>
+                        <p>
+                            An active performer, Zixiong played at the National Centre for the Performing Arts (Beijing) in 2019. In Germany, he performed Beethoven’s Symphony No. 9 under Eiji Oue (2024) and played in the HMTM Orchestra for "The Unanswered Question" with the NDR Radiophilharmonie under Ingo Metzmacher (2025). He has attended masterclasses with renowned cellists including Lynn Harrell, Wang Jian, and Qin Liwei.
+                        </p>
+                    </div>
+
+                    <div class="lang-zh">
+                        <p>
+                            赵梓雄出生于2005年，4岁起师从冯军老师学习大提琴。2016年起跟随中央音乐学院俞明青教授学习，2017年师从朱牧副教授。2018年，他以优异成绩考入中央音乐学院附中，师从杨锰教授。
+                        </p>
+                        <p>
+                            2024年，他考入德国汉诺威音乐、戏剧与媒体学院（HMTM Hannover），师从 Leonid Gorokhov 教授。
+                        </p>
+                        <p>
+                            赵梓雄在职业生涯中斩获了多项国际大奖。他的比赛生涯始于2010年第四届“爱琴杯”大提琴比赛（二等奖）。2017年，他在第七届“爱琴杯”国际大提琴比赛中获得D组一等奖及中国作品演奏奖。2019年，他在首届“大提琴的家”国际大提琴比赛少年组中获得第四名。
+                        </p>
+                        <p>
+                            2021年，赵梓雄在国际舞台上崭露头角：他在纽约“金色古典音乐奖”国际比赛中获得一等奖（16-18岁组），并受邀于次年在卡内基音乐厅演出。同年，他在第三届捷克“古斯塔夫·马勒奖”大提琴比赛、保加利亚“金色弦乐”比赛、意大利马萨城（Città di Massa）比赛以及维也纳金色大厅弦乐邀请赛中均获得顶级奖项。
+                        </p>
+                        <p>
+                            2022年，他荣获第12届“德累斯顿冬之星”国际比赛一等奖及金奖，以及意大利第11届“朱塞佩·拉奇蒂纪念”国际音乐比赛一等奖。作为“无题（Wu Ti）”弦乐四重奏的大提琴手，他在第七届蜂鸟音乐奖比赛中获得北京赛区及全国总决赛一等奖，并在CMIA国际室内乐音乐节中获奖。
+                        </p>
+                        <p>
+                            赵梓雄拥有丰富的演出经验。2019年，他在国家大剧院参演了杨锰教授导赏的“不同风格大提琴作品赏析”音乐会。2024年11月，他在汉诺威随指挥家大植英次（Eiji Oue）演出了贝多芬第九交响曲。2025年6月，作为HMTM大学管弦乐团成员，他在汉诺威圆顶大厅（Kuppelsaal）与北德广播爱乐乐团（NDR Radiophilharmonie）合作演出了《未作回答的问题》（指挥：Ingo Metzmacher）。
+                        </p>
+                        <p>
+                            他也曾参加Lynn Harrell、Matti Rossi、Philippe Muller、Michel Strauss、Gavriel Lipkind、王健和秦立巍等国内外知名大提琴家的大师班，并广受好评。
+                        </p>
+                    </div>
+
                 </div>
                 <div class="bio-photo">
                     <img src="photo2.png" alt="Zixiong Zhao">
@@ -270,82 +360,109 @@
         </section>
 
         <section class="awards-section" id="awards">
-            <h2 class="section-title">Honors & Awards</h2>
+            <h2 class="section-title">
+                <span class="lang-en">Honors & Awards</span>
+                <span class="lang-zh">荣誉与奖项</span>
+            </h2>
             
-            <div class="award-item">
-                <span class="award-year">2022</span>
-                <span class="award-desc">First Prize & Gold Medal (Ages 16–18), 12th "Dresden Winter Stars" International Competition</span>
-            </div>
+            <div class="awards-grid">
+                <div class="award-item">
+                    <span class="award-year">2022</span>
+                    <span class="award-desc lang-en">First Prize & Gold Medal, 12th "Dresden Winter Stars" International Competition</span>
+                    <span class="award-desc lang-zh">一等奖及金奖，第12届“德累斯顿冬之星”国际比赛</span>
+                </div>
 
-            <div class="award-item">
-                <span class="award-year">2022</span>
-                <span class="award-desc">First Prize (Strings Group D), 11th "Giuseppe Raciti Memorial" International Music Competition, Italy</span>
-            </div>
+                <div class="award-item">
+                    <span class="award-year">2022</span>
+                    <span class="award-desc lang-en">First Prize, 11th "Giuseppe Raciti Memorial" International Music Competition, Italy</span>
+                    <span class="award-desc lang-zh">一等奖，第11届意大利“朱塞佩·拉奇蒂纪念”国际音乐比赛</span>
+                </div>
 
-            <div class="award-item">
-                <span class="award-year">2021</span>
-                <span class="award-desc">First Prize (Ages 16–18), Golden Classical Music Awards International Competition (New York)</span>
-            </div>
+                <div class="award-item">
+                    <span class="award-year">2021</span>
+                    <span class="award-desc lang-en">First Prize, Golden Classical Music Awards International Competition (New York)</span>
+                    <span class="award-desc lang-zh">一等奖，纽约“金色古典音乐奖”国际比赛 (受邀卡内基演出)</span>
+                </div>
 
-            <div class="award-item">
-                <span class="award-year">2021</span>
-                <span class="award-desc">Second Prize (Group 7), 3rd Czech “Gustav Mahler Prize” Cello Competition</span>
-            </div>
+                <div class="award-item">
+                    <span class="award-year">2021</span>
+                    <span class="award-desc lang-en">Second Prize, 3rd Czech “Gustav Mahler Prize” Cello Competition</span>
+                    <span class="award-desc lang-zh">二等奖，第三届捷克“古斯塔夫·马勒奖”大提琴比赛</span>
+                </div>
 
-            <div class="award-item">
-                <span class="award-year">2021</span>
-                <span class="award-desc">First Prize (Cello Category), “Golden Strings of Bulgaria” Competition</span>
-            </div>
+                <div class="award-item">
+                    <span class="award-year">2021</span>
+                    <span class="award-desc lang-en">First Prize, “Golden Strings of Bulgaria” Competition</span>
+                    <span class="award-desc lang-zh">一等奖，保加利亚“金色弦乐”比赛</span>
+                </div>
 
-            <div class="award-item">
-                <span class="award-year">2021</span>
-                <span class="award-desc">First Prize (Solo Strings Group D), Città di Massa Competition, Italy</span>
-            </div>
+                <div class="award-item">
+                    <span class="award-year">2021</span>
+                    <span class="award-desc lang-en">First Prize, Città di Massa Competition, Italy</span>
+                    <span class="award-desc lang-zh">一等奖，意大利马萨城国际比赛</span>
+                </div>
 
-            <div class="award-item">
-                <span class="award-year">2021</span>
-                <span class="award-desc">Gold Award (Cello Open Group B), Vienna Golden Hall Strings Invitational</span>
-            </div>
+                <div class="award-item">
+                    <span class="award-year">2021</span>
+                    <span class="award-desc lang-en">Gold Award, Vienna Golden Hall Strings Invitational</span>
+                    <span class="award-desc lang-zh">金奖，维也纳金色大厅弦乐邀请赛</span>
+                </div>
 
-            <div class="award-item">
-                <span class="award-year">2021 (Chamber Music)</span>
-                <span class="award-desc">First Prize (Beijing Division & National Finals), 7th Hummingbird Music Competition</span>
-            </div>
+                <div class="award-item">
+                    <span class="award-year">2021 (Chamber Music)</span>
+                    <span class="award-desc lang-en">First Prize (National Finals), 7th Hummingbird Music Competition</span>
+                    <span class="award-desc lang-zh">一等奖 (全国总决赛)，第七届蜂鸟音乐奖 (无题弦乐四重奏)</span>
+                </div>
 
-            <div class="award-item">
-                <span class="award-year">2021 (Chamber Music)</span>
-                <span class="award-desc">First Prize (Youth Ensemble), Vienna Golden Hall Strings Invitational</span>
-            </div>
+                <div class="award-item">
+                    <span class="award-year">2021 (Chamber Music)</span>
+                    <span class="award-desc lang-en">Bronze Award, CMIA International Chamber Music Festival</span>
+                    <span class="award-desc lang-zh">铜奖 (专业组)，CMIA 国际室内乐音乐节</span>
+                </div>
 
-            <div class="award-item">
-                <span class="award-year">2021 (Chamber Music)</span>
-                <span class="award-desc">Bronze Award (Professional Group), CMIA International Chamber Music Festival</span>
-            </div>
+                <div class="award-item">
+                    <span class="award-year">2019</span>
+                    <span class="award-desc lang-en">Fourth Prize, 1st “Cello Family” International Cello Competition</span>
+                    <span class="award-desc lang-zh">第四名，首届“大提琴的家”国际大提琴比赛 (少年组)</span>
+                </div>
 
-            <div class="award-item">
-                <span class="award-year">2019</span>
-                <span class="award-desc">Fourth Prize (Junior Division), 1st “Cello Family” International Cello Competition</span>
-            </div>
+                <div class="award-item">
+                    <span class="award-year">2017</span>
+                    <span class="award-desc lang-en">First Prize, 7th “Ai Qin Bei” International Cello Competition</span>
+                    <span class="award-desc lang-zh">一等奖，第七届“爱琴杯”国际大提琴比赛</span>
+                </div>
 
-            <div class="award-item">
-                <span class="award-year">2017</span>
-                <span class="award-desc">First Prize (Group D) & First Prize (Chinese Repertoire), 7th “Ai Qin Bei” International Cello Competition</span>
-            </div>
-
-            <div class="award-item">
-                <span class="award-year">2010</span>
-                <span class="award-desc">Second Prize (Group F), 4th “Ai Qin Bei” Cello Competition</span>
+                <div class="award-item">
+                    <span class="award-year">2010</span>
+                    <span class="award-desc lang-en">Second Prize, 4th “Ai Qin Bei” Cello Competition</span>
+                    <span class="award-desc lang-zh">二等奖，第四届“爱琴杯”大提琴比赛</span>
+                </div>
             </div>
         </section>
 
     </div>
 
     <footer id="contact">
-        <h2 style="color: #fff; margin-bottom: 20px;">Contact</h2>
+        <h2 style="color: #fff; margin-bottom: 20px;">
+            <span class="lang-en">Contact</span>
+            <span class="lang-zh">联系方式</span>
+        </h2>
         <a href="mailto:zixiongzhao1@gmail.com" class="email-link">zixiongzhao1@gmail.com</a>
         <br><br>
         <p style="color: #666; font-size: 0.8rem;">&copy; 2025 Zixiong Zhao</p>
     </footer>
 
+    <script>
+        function toggleLanguage() {
+            const body = document.body;
+            if (body.classList.contains('en-mode')) {
+                body.classList.remove('en-mode');
+                body.classList.add('zh-mode');
+            } else {
+                body.classList.remove('zh-mode');
+                body.classList.add('en-mode');
+            }
+        }
+    </script>
 </body>
 </html>
