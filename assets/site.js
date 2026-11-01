@@ -119,29 +119,4 @@
         window.addEventListener("scroll", updateNav, { passive: true });
     }
 
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const revealItems = document.querySelectorAll("[data-reveal]");
-
-    if (!reduceMotion && "IntersectionObserver" in window && revealItems.length) {
-        body.classList.add("reveal-ready");
-
-        const revealObserver = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (!entry.isIntersecting) {
-                        return;
-                    }
-
-                    entry.target.classList.add("is-visible");
-                    revealObserver.unobserve(entry.target);
-                });
-            },
-            {
-                threshold: 0.14,
-                rootMargin: "0px 0px -5% 0px",
-            }
-        );
-
-        revealItems.forEach((item) => revealObserver.observe(item));
-    }
 })();

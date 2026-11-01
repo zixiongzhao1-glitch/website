@@ -657,9 +657,9 @@ section {
 }
 
 .bio-text {
-    color: var(--ink-soft);
-    font-size: 0.94rem;
-    line-height: 1.86;
+    color: #35322c;
+    font-size: 1.04rem;
+    line-height: 1.8;
     column-count: 2;
     column-gap: clamp(30px, 4vw, 58px);
 }
@@ -748,36 +748,38 @@ section {
 
 .award-item {
     display: grid;
-    grid-template-columns: 30px 92px minmax(0, 1fr);
-    gap: 16px;
+    grid-template-columns: 28px 64px minmax(0, 1fr);
+    gap: 20px;
     align-items: start;
-    padding: 25px 0 27px;
+    padding: 27px 0 29px;
     border-top: 1px solid var(--line);
     counter-increment: award;
 }
 
 .award-item::before {
-    padding-top: 3px;
+    padding-top: 4px;
     color: rgba(28, 27, 24, 0.35);
     content: counter(award, decimal-leading-zero);
     font-family: var(--sans);
-    font-size: 0.55rem;
-    font-weight: 500;
+    font-size: 0.62rem;
+    font-weight: 600;
     letter-spacing: 0.12em;
 }
 
 .award-year {
     color: var(--gold);
-    font-family: var(--display);
-    font-size: 1.16rem;
-    font-style: italic;
-    line-height: 1.25;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    line-height: 1.6;
 }
 
 .award-desc {
-    color: var(--ink-soft);
-    font-size: 0.8rem;
-    line-height: 1.65;
+    color: #34312c;
+    font-size: 0.94rem;
+    font-weight: 400;
+    line-height: 1.6;
     transition: color 180ms ease, transform 220ms ease;
 }
 
