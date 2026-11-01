@@ -400,7 +400,7 @@ body.zh-mode .lang-zh {
     z-index: 1;
     display: flex;
     align-items: flex-end;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 36px;
     width: 100%;
     margin-top: clamp(42px, 6vh, 70px);
@@ -559,6 +559,27 @@ section {
     gap: clamp(52px, 9vw, 142px);
     align-items: end;
     margin-top: clamp(60px, 8vw, 110px);
+}
+
+.intro-grid--simple {
+    display: block;
+    max-width: 920px;
+    margin-top: clamp(58px, 8vw, 110px);
+}
+
+.intro-copy.intro-copy--lead p {
+    max-width: 920px;
+    margin: 0;
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: clamp(2.15rem, 3.6vw, 3.6rem);
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    line-height: 1.24;
+}
+
+.intro-copy.intro-copy--lead strong {
+    font-weight: 500;
 }
 
 .kicker {
@@ -784,7 +805,7 @@ section {
 .footer-title {
     margin: 0;
     font-family: var(--display);
-    font-size: clamp(4rem, 6.8vw, 7.2rem);
+    font-size: clamp(3.8rem, 5.5vw, 5.8rem);
     font-weight: 400;
     letter-spacing: -0.065em;
     line-height: 0.78;
