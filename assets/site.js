@@ -119,4 +119,19 @@
         window.addEventListener("scroll", updateNav, { passive: true });
     }
 
+    function alignHashTarget() {
+        const targetId = decodeURIComponent(window.location.hash.slice(1));
+        if (!targetId) {
+            return;
+        }
+
+        const target = document.getElementById(targetId);
+        if (target) {
+            target.scrollIntoView({ block: "start" });
+        }
+    }
+
+    window.addEventListener("load", alignHashTarget, { once: true });
+    document.fonts?.ready.then(alignHashTarget);
+
 })();
