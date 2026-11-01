@@ -4,7 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Official website of cellist Zixiong Zhao | 赵梓雄个人主页">
+    <meta name="theme-color" content="#121212">
+    <meta name="color-scheme" content="dark">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     <title>Zixiong Zhao | Cellist</title>
+    <link rel="canonical" href="https://www.zixiongzhao.com/">
+    <link rel="icon" href="/assets/icon-192.png?v=20261101" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=20261101">
+    <link
+        rel="preload"
+        as="image"
+        type="image/avif"
+        href="/assets/hero-1600.avif?v=20261101"
+        imagesrcset="/assets/hero-960.avif?v=20261101 960w, /assets/hero-1600.avif?v=20261101 1600w, /assets/hero-2400.avif?v=20261101 2400w"
+        imagesizes="100vw"
+        fetchpriority="high"
+    >
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Zixiong Zhao">
+    <meta property="og:title" content="Zixiong Zhao | Cellist">
+    <meta property="og:description" content="Official website of cellist Zixiong Zhao | 赵梓雄个人主页">
+    <meta property="og:url" content="https://www.zixiongzhao.com/">
+    <meta property="og:image" content="https://www.zixiongzhao.com/assets/social-card.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Portrait of cellist Zixiong Zhao">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="zh_CN">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Zixiong Zhao | Cellist">
+    <meta name="twitter:description" content="Official website of cellist Zixiong Zhao | 赵梓雄个人主页">
+    <meta name="twitter:image" content="https://www.zixiongzhao.com/assets/social-card.jpg">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Zixiong Zhao",
+        "alternateName": "赵梓雄",
+        "url": "https://www.zixiongzhao.com/",
+        "image": "https://www.zixiongzhao.com/assets/social-card.jpg",
+        "jobTitle": "Cellist",
+        "email": "mailto:zixiongzhao1@gmail.com",
+        "affiliation": {
+            "@type": "CollegeOrUniversity",
+            "name": "Hochschule für Musik, Theater und Medien Hannover"
+        }
+    }
+    </script>
     <style>
         /* --- 1. Core Styles --- */
         :root {
@@ -12,6 +60,11 @@
             --text-color: #e0e0e0;
             --accent-gold: #c5a059;
             --section-bg: #1e1e1e;
+            color-scheme: dark;
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         html {
@@ -25,6 +78,22 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.8;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            z-index: 11000;
+            padding: 10px 16px;
+            color: #121212;
+            background: var(--accent-gold);
+            transform: translateY(-160%);
+        }
+
+        .skip-link:focus {
+            color: #121212;
+            transform: translateY(0);
         }
 
         /* --- 语言切换核心逻辑 --- */
@@ -55,6 +124,12 @@
 
         a:hover {
             color: #fff;
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 4px;
         }
 
         /* --- 2. Navigation (导航栏) --- */
@@ -88,10 +163,10 @@
         .menu {
             display: flex;
             align-items: center;
+            gap: 30px;
         }
 
         .menu a {
-            margin-left: 30px;
             font-size: 0.9rem;
             color: #bbb;
             cursor: pointer;
@@ -105,11 +180,15 @@
 
         /* 语言按钮样式 */
         .lang-switch-btn {
-            margin-left: 30px;
-            border: 1px solid var(--accent-gold);
+            appearance: none;
+            min-height: 36px;
             padding: 4px 12px;
+            border: 1px solid var(--accent-gold);
             border-radius: 20px;
+            background: transparent;
+            font-family: inherit;
             font-size: 0.8rem;
+            line-height: 1.2;
             color: var(--accent-gold) !important;
             user-select: none;
             cursor: pointer;
@@ -121,15 +200,45 @@
 
         /* --- 3. Hero Section --- */
         header {
+            position: relative;
+            isolation: isolate;
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('photo1.png') no-repeat center center/cover;
+            height: 100svh;
+            overflow: hidden;
+            background: #000;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background-attachment: fixed;
-            padding-top: 60px; /* 防止内容被导航栏遮挡 */
+            padding: 90px 20px 0; /* 防止内容被导航栏遮挡 */
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+            pointer-events: none;
+        }
+
+        .hero-media,
+        .hero-media img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-media img {
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero-copy {
+            position: relative;
+            z-index: 2;
         }
 
         header h1 {
@@ -150,6 +259,10 @@
             max-width: 1000px;
             margin: 0 auto;
             padding: 80px 20px;
+        }
+
+        section {
+            scroll-margin-top: 110px;
         }
 
         .intro {
@@ -181,7 +294,11 @@
         .bio-text p { margin-bottom: 20px; color: #d0d0d0; }
 
         .bio-photo img {
+            display: block;
             width: 100%;
+            height: auto;
+            aspect-ratio: 2 / 3;
+            object-fit: cover;
             border-radius: 2px;
             box-shadow: 10px 10px 0px var(--section-bg);
             filter: grayscale(10%);
@@ -210,11 +327,18 @@
             border-top: 1px solid #333;
         }
         .email-link { font-size: 1.5rem; border-bottom: 1px solid var(--accent-gold); padding-bottom: 5px; }
+        .footer-title { color: #fff; margin-bottom: 20px; }
+        .copyright { color: #aaa; font-size: 0.8rem; }
 
         /* --- Mobile Responsive (重点修改部分) --- */
         @media (max-width: 768px) {
-            header { background-attachment: scroll; } /* 修复iOS背景卡顿 */
+            header {
+                height: auto;
+                min-height: 100svh;
+                padding: 150px 20px 80px;
+            }
             header h1 { font-size: 2.5rem; padding: 0 10px; }
+            section { scroll-margin-top: 155px; }
             
             /* 导航栏手机端大改版 */
             nav { padding: 15px 0; }
@@ -230,26 +354,34 @@
                 width: 100%;
                 justify-content: center; /* 菜单居中 */
                 flex-wrap: wrap; /* 允许换行，以防万一 */
+                gap: 8px 20px;
             }
             .menu a {
-                margin: 0 10px; /* 调整间距 */
                 font-size: 0.85rem; /* 字体稍微改小 */
-                margin-left: 0; /* 重置左边距 */
                 padding: 5px; /* 增加点击区域 */
             }
             .lang-switch-btn {
-                margin-left: 10px; /* 调整按钮间距 */
-                margin-top: 0;
+                min-height: 44px;
             }
 
             /* 其他布局调整 */
+            .content-wrapper { padding: 60px 20px; }
+            .intro { padding: 28px 20px; }
             .bio-grid { grid-template-columns: 1fr; }
             .bio-photo { order: -1; margin-bottom: 30px; }
             .awards-grid { grid-template-columns: 1fr; }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { transition-duration: 0.01ms !important; }
+        }
     </style>
 </head>
-<body class="en-mode"> <nav>
+<body class="en-mode">
+    <a class="skip-link" href="#main-content">Skip to content / 跳至正文</a>
+
+    <nav aria-label="Main navigation">
         <div class="nav-inner">
             <div class="logo">
                 <span class="lang-en">ZIXIONG ZHAO</span>
@@ -265,26 +397,55 @@
                 <a href="#contact">
                     <span class="lang-en">Contact</span>
                     <span class="lang-zh">联系</span> </a>
-                <div class="lang-switch-btn" onclick="toggleLanguage()">
+                <button
+                    class="lang-switch-btn"
+                    id="language-toggle"
+                    type="button"
+                    aria-label="Switch language to Chinese"
+                >
                     <span class="lang-en">中文</span>
                     <span class="lang-zh">EN</span>
-                </div>
+                </button>
             </div>
         </div>
     </nav>
 
     <header>
-        <h1>
-            <span class="lang-en">Zixiong Zhao</span>
-            <span class="lang-zh">赵梓雄</span>
-        </h1>
-        <p>
-            <span class="lang-en">Cellist</span>
-            <span class="lang-zh">大提琴演奏家</span>
-        </p>
+        <picture class="hero-media" aria-hidden="true">
+            <source
+                type="image/avif"
+                srcset="/assets/hero-960.avif?v=20261101 960w, /assets/hero-1600.avif?v=20261101 1600w, /assets/hero-2400.avif?v=20261101 2400w"
+                sizes="100vw"
+            >
+            <source
+                type="image/webp"
+                srcset="/assets/hero-960.webp?v=20261101 960w, /assets/hero-1600.webp?v=20261101 1600w, /assets/hero-2400.webp?v=20261101 2400w"
+                sizes="100vw"
+            >
+            <img
+                src="/assets/hero-1600.jpg?v=20261101"
+                srcset="/assets/hero-960.jpg?v=20261101 960w, /assets/hero-1600.jpg?v=20261101 1600w, /assets/hero-2400.jpg?v=20261101 2400w"
+                sizes="100vw"
+                width="1600"
+                height="945"
+                alt=""
+                decoding="async"
+                fetchpriority="high"
+            >
+        </picture>
+        <div class="hero-copy">
+            <h1>
+                <span class="lang-en">Zixiong Zhao</span>
+                <span class="lang-zh">赵梓雄</span>
+            </h1>
+            <p>
+                <span class="lang-en">Cellist</span>
+                <span class="lang-zh">大提琴演奏家</span>
+            </p>
+        </div>
     </header>
 
-    <div class="content-wrapper">
+    <main class="content-wrapper" id="main-content">
 
         <section class="intro">
             <p class="lang-en">
@@ -354,7 +515,28 @@
 
                 </div>
                 <div class="bio-photo">
-                    <img src="photo2.png" alt="Zixiong Zhao">
+                    <picture>
+                        <source
+                            type="image/avif"
+                            srcset="/assets/portrait-480.avif?v=20261101 480w, /assets/portrait-720.avif?v=20261101 720w, /assets/portrait-1080.avif?v=20261101 1080w"
+                            sizes="(max-width: 768px) calc(100vw - 40px), 350px"
+                        >
+                        <source
+                            type="image/webp"
+                            srcset="/assets/portrait-480.webp?v=20261101 480w, /assets/portrait-720.webp?v=20261101 720w, /assets/portrait-1080.webp?v=20261101 1080w"
+                            sizes="(max-width: 768px) calc(100vw - 40px), 350px"
+                        >
+                        <img
+                            src="/assets/portrait-720.jpg?v=20261101"
+                            srcset="/assets/portrait-480.jpg?v=20261101 480w, /assets/portrait-720.jpg?v=20261101 720w, /assets/portrait-1080.jpg?v=20261101 1080w"
+                            sizes="(max-width: 768px) calc(100vw - 40px), 350px"
+                            width="720"
+                            height="1080"
+                            alt="Zixiong Zhao holding his cello"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </picture>
                 </div>
             </div>
         </section>
@@ -440,29 +622,18 @@
             </div>
         </section>
 
-    </div>
+    </main>
 
     <footer id="contact">
-        <h2 style="color: #fff; margin-bottom: 20px;">
+        <h2 class="footer-title">
             <span class="lang-en">Contact</span>
             <span class="lang-zh">联系方式</span>
         </h2>
         <a href="mailto:zixiongzhao1@gmail.com" class="email-link">zixiongzhao1@gmail.com</a>
         <br><br>
-        <p style="color: #666; font-size: 0.8rem;">&copy; 2025 Zixiong Zhao</p>
+        <p class="copyright">&copy; 2026 Zixiong Zhao</p>
     </footer>
 
-    <script>
-        function toggleLanguage() {
-            const body = document.body;
-            if (body.classList.contains('en-mode')) {
-                body.classList.remove('en-mode');
-                body.classList.add('zh-mode');
-            } else {
-                body.classList.remove('zh-mode');
-                body.classList.add('en-mode');
-            }
-        }
-    </script>
+    <script src="/assets/site.js?v=20261101" defer></script>
 </body>
 </html>
