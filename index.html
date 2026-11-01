@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" translate="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Official website of cellist Zixiong Zhao | 赵梓雄个人主页">
-    <meta name="theme-color" content="#121212">
-    <meta name="color-scheme" content="dark">
+    <meta name="google" content="notranslate">
+    <meta name="theme-color" content="#f2eee7">
+    <meta name="color-scheme" content="light">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <title>Zixiong Zhao | Cellist</title>
     <link rel="canonical" href="https://www.zixiongzhao.com/">
@@ -15,8 +16,19 @@
         rel="preload"
         as="image"
         type="image/avif"
+        media="(min-width: 901px)"
         href="/assets/hero-1600.avif?v=20261101"
         imagesrcset="/assets/hero-960.avif?v=20261101 960w, /assets/hero-1600.avif?v=20261101 1600w, /assets/hero-2400.avif?v=20261101 2400w"
+        imagesizes="(max-width: 900px) 100vw, 56vw"
+        fetchpriority="high"
+    >
+    <link
+        rel="preload"
+        as="image"
+        type="image/avif"
+        media="(max-width: 900px)"
+        href="/assets/hero-mobile-720.avif?v=20261102"
+        imagesrcset="/assets/hero-mobile-480.avif?v=20261102 480w, /assets/hero-mobile-720.avif?v=20261102 720w, /assets/hero-mobile-1080.avif?v=20261102 1080w"
         imagesizes="100vw"
         fetchpriority="high"
     >
@@ -53,7 +65,7 @@
         }
     }
     </script>
-    <style>
+    <style media="not all">
         /* --- 1. Core Styles --- */
         :root {
             --bg-color: #121212;
@@ -377,96 +389,186 @@
             *, *::before, *::after { transition-duration: 0.01ms !important; }
         }
     </style>
+    <link rel="preload" href="/assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/styles.css?v=20261102">
 </head>
 <body class="en-mode">
     <a class="skip-link" href="#main-content">Skip to content / 跳至正文</a>
 
-    <nav aria-label="Main navigation">
-        <div class="nav-inner">
-            <div class="logo">
-                <span class="lang-en">ZIXIONG ZHAO</span>
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a class="brand" href="#top" aria-label="Zixiong Zhao — back to top">
+            <span class="brand-mark" aria-hidden="true">Z</span>
+            <span class="brand-name">
+                <span class="lang-en">Zixiong Zhao</span>
                 <span class="lang-zh">赵梓雄</span>
-            </div>
-            <div class="menu">
-                <a href="#biography">
-                    <span class="lang-en">Biography</span>
-                    <span class="lang-zh">简介</span> </a>
-                <a href="#awards">
-                    <span class="lang-en">Awards</span>
-                    <span class="lang-zh">奖项</span> </a>
-                <a href="#contact">
-                    <span class="lang-en">Contact</span>
-                    <span class="lang-zh">联系</span> </a>
-                <button
-                    class="lang-switch-btn"
-                    id="language-toggle"
-                    type="button"
-                    aria-label="Switch language to Chinese"
-                >
-                    <span class="lang-en">中文</span>
-                    <span class="lang-zh">EN</span>
-                </button>
-            </div>
+            </span>
+        </a>
+
+        <div class="nav-links" id="site-menu">
+            <a href="#biography">
+                <span class="lang-en">Biography</span>
+                <span class="lang-zh">简介</span>
+            </a>
+            <a href="#awards">
+                <span class="lang-en">Awards</span>
+                <span class="lang-zh">奖项</span>
+            </a>
+            <a href="#contact">
+                <span class="lang-en">Contact</span>
+                <span class="lang-zh">联系</span>
+            </a>
+        </div>
+
+        <div class="nav-actions">
+            <button
+                class="lang-switch-btn"
+                id="language-toggle"
+                type="button"
+                aria-label="Switch language to Chinese"
+            >
+                <span class="lang-en">中文</span>
+                <span class="lang-zh">EN</span>
+            </button>
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                type="button"
+                aria-controls="site-menu"
+                aria-expanded="false"
+            >
+                <span class="menu-toggle-label">Menu</span>
+                <span class="menu-bars" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                </span>
+            </button>
         </div>
     </nav>
 
-    <header>
-        <picture class="hero-media" aria-hidden="true">
-            <source
-                type="image/avif"
-                srcset="/assets/hero-960.avif?v=20261101 960w, /assets/hero-1600.avif?v=20261101 1600w, /assets/hero-2400.avif?v=20261101 2400w"
-                sizes="100vw"
-            >
-            <source
-                type="image/webp"
-                srcset="/assets/hero-960.webp?v=20261101 960w, /assets/hero-1600.webp?v=20261101 1600w, /assets/hero-2400.webp?v=20261101 2400w"
-                sizes="100vw"
-            >
-            <img
-                src="/assets/hero-1600.jpg?v=20261101"
-                srcset="/assets/hero-960.jpg?v=20261101 960w, /assets/hero-1600.jpg?v=20261101 1600w, /assets/hero-2400.jpg?v=20261101 2400w"
-                sizes="100vw"
-                width="1600"
-                height="945"
-                alt=""
-                decoding="async"
-                fetchpriority="high"
-            >
-        </picture>
+    <header class="hero" id="top">
         <div class="hero-copy">
-            <h1>
-                <span class="lang-en">Zixiong Zhao</span>
+            <p class="eyebrow">
+                <span class="lang-en">Cellist · Hannover</span>
+                <span class="lang-zh">大提琴演奏家 · 汉诺威</span>
+            </p>
+            <h1 class="hero-name">
+                <span class="lang-en">
+                    <span class="name-first">Zixiong</span>
+                    <span class="name-last">Zhao</span>
+                </span>
                 <span class="lang-zh">赵梓雄</span>
             </h1>
-            <p>
-                <span class="lang-en">Cellist</span>
-                <span class="lang-zh">大提琴演奏家</span>
-            </p>
+            <div class="hero-footer">
+                <p class="hero-subtitle">
+                    <span class="lang-en">A classical voice for a contemporary stage.</span>
+                    <span class="lang-zh">以古典之声，连接当代舞台。</span>
+                </p>
+                <a class="scroll-cue" href="#intro">
+                    <span class="lang-en">Discover</span>
+                    <span class="lang-zh">向下探索</span>
+                    <span class="scroll-line" aria-hidden="true"></span>
+                </a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <picture class="hero-media">
+                <source
+                    media="(max-width: 900px)"
+                    type="image/avif"
+                    srcset="/assets/hero-mobile-480.avif?v=20261102 480w, /assets/hero-mobile-720.avif?v=20261102 720w, /assets/hero-mobile-1080.avif?v=20261102 1080w"
+                    sizes="100vw"
+                >
+                <source
+                    media="(max-width: 900px)"
+                    type="image/webp"
+                    srcset="/assets/hero-mobile-480.webp?v=20261102 480w, /assets/hero-mobile-720.webp?v=20261102 720w, /assets/hero-mobile-1080.webp?v=20261102 1080w"
+                    sizes="100vw"
+                >
+                <source
+                    media="(max-width: 900px)"
+                    type="image/jpeg"
+                    srcset="/assets/hero-mobile-480.jpg?v=20261102 480w, /assets/hero-mobile-720.jpg?v=20261102 720w, /assets/hero-mobile-1080.jpg?v=20261102 1080w"
+                    sizes="100vw"
+                >
+                <source
+                    type="image/avif"
+                    srcset="/assets/hero-960.avif?v=20261101 960w, /assets/hero-1600.avif?v=20261101 1600w, /assets/hero-2400.avif?v=20261101 2400w"
+                    sizes="(max-width: 900px) 100vw, 56vw"
+                >
+                <source
+                    type="image/webp"
+                    srcset="/assets/hero-960.webp?v=20261101 960w, /assets/hero-1600.webp?v=20261101 1600w, /assets/hero-2400.webp?v=20261101 2400w"
+                    sizes="(max-width: 900px) 100vw, 56vw"
+                >
+                <img
+                    src="/assets/hero-1600.jpg?v=20261101"
+                    srcset="/assets/hero-960.jpg?v=20261101 960w, /assets/hero-1600.jpg?v=20261101 1600w, /assets/hero-2400.jpg?v=20261101 2400w"
+                    sizes="(max-width: 900px) 100vw, 56vw"
+                    width="1600"
+                    height="945"
+                    alt="Portrait of cellist Zixiong Zhao"
+                    decoding="async"
+                    fetchpriority="high"
+                >
+            </picture>
+            <span class="hero-caption" aria-hidden="true">
+                <span class="lang-en">Portrait · Zixiong Zhao</span>
+                <span class="lang-zh">肖像 · 赵梓雄</span>
+            </span>
         </div>
     </header>
 
-    <main class="content-wrapper" id="main-content">
-
-        <section class="intro">
-            <p class="lang-en">
-                My name is <strong>Zixiong Zhao</strong>.<br>
-                I am currently studying Cello for my Bachelor's degree at the 
-                <strong>Hochschule für Musik, Theater und Medien Hannover</strong>.
-            </p>
-            <p class="lang-zh">
-                我是<strong>赵梓雄</strong>。<br>
-                目前就读于<strong>德国汉诺威音乐、戏剧与媒体学院</strong>，<br>攻读大提琴演奏学士学位。
-            </p>
+    <main id="main-content">
+        <section class="intro-section section-shell" id="intro">
+            <div class="section-marker">
+                <span>01</span>
+                <span class="lang-en">Profile</span>
+                <span class="lang-zh">简介</span>
+            </div>
+            <div class="intro-grid">
+                <div class="intro-heading" data-reveal>
+                    <p class="kicker">
+                        <span class="lang-en">Artist profile</span>
+                        <span class="lang-zh">艺术家档案</span>
+                    </p>
+                    <h2 class="display-title">
+                        <span class="lang-en">Cellist.<br><em>Based in Hannover.</em></span>
+                        <span class="lang-zh">大提琴演奏家<br><em>现居汉诺威</em></span>
+                    </h2>
+                </div>
+                <div class="intro-copy" data-reveal>
+                    <p class="lang-en">
+                        My name is <strong>Zixiong Zhao</strong>. I am currently studying Cello for my Bachelor's degree at the
+                        <strong>Hochschule für Musik, Theater und Medien Hannover</strong>.
+                    </p>
+                    <p class="lang-zh">
+                        我是<strong>赵梓雄</strong>。目前就读于<strong>德国汉诺威音乐、戏剧与媒体学院</strong>，攻读大提琴演奏学士学位。
+                    </p>
+                    <a class="text-link" href="#biography">
+                        <span class="lang-en">Read the biography</span>
+                        <span class="lang-zh">阅读完整简介</span>
+                        <span aria-hidden="true">↘</span>
+                    </a>
+                </div>
+            </div>
         </section>
 
-        <section id="biography">
-            <h2 class="section-title">
-                <span class="lang-en">Artist Biography</span>
-                <span class="lang-zh">艺术家简介</span>
-            </h2>
+        <section class="biography-section section-shell" id="biography">
+            <div class="section-heading">
+                <div class="section-marker">
+                    <span>02</span>
+                    <span class="lang-en">Biography</span>
+                    <span class="lang-zh">简介</span>
+                </div>
+                <h2 class="section-title">
+                    <span class="lang-en">Artist Biography</span>
+                    <span class="lang-zh">艺术家简介</span>
+                </h2>
+            </div>
             
             <div class="bio-grid">
-                <div class="bio-text">
+                <div class="bio-text" data-reveal>
                     
                     <div class="lang-en">
                         <p>
@@ -514,7 +616,7 @@
                     </div>
 
                 </div>
-                <div class="bio-photo">
+                <figure class="bio-photo" data-reveal>
                     <picture>
                         <source
                             type="image/avif"
@@ -537,15 +639,26 @@
                             decoding="async"
                         >
                     </picture>
-                </div>
+                    <figcaption>
+                        <span class="lang-en">Zixiong Zhao · Cello</span>
+                        <span class="lang-zh">赵梓雄 · 大提琴</span>
+                    </figcaption>
+                </figure>
             </div>
         </section>
 
         <section class="awards-section" id="awards">
-            <h2 class="section-title">
-                <span class="lang-en">Honors & Awards</span>
-                <span class="lang-zh">荣誉与奖项</span>
-            </h2>
+            <div class="section-heading">
+                <div class="section-marker section-marker-light">
+                    <span>03</span>
+                    <span class="lang-en">Recognition</span>
+                    <span class="lang-zh">荣誉</span>
+                </div>
+                <h2 class="section-title">
+                    <span class="lang-en">Honors & Awards</span>
+                    <span class="lang-zh">荣誉与奖项</span>
+                </h2>
+            </div>
             
             <div class="awards-grid">
                 <div class="award-item">
@@ -624,14 +737,37 @@
 
     </main>
 
-    <footer id="contact">
-        <h2 class="footer-title">
+    <footer class="site-footer section-shell" id="contact">
+        <div class="section-marker">
+            <span>04</span>
             <span class="lang-en">Contact</span>
-            <span class="lang-zh">联系方式</span>
-        </h2>
-        <a href="mailto:zixiongzhao1@gmail.com" class="email-link">zixiongzhao1@gmail.com</a>
-        <br><br>
-        <p class="copyright">&copy; 2026 Zixiong Zhao</p>
+            <span class="lang-zh">联系</span>
+        </div>
+        <div class="footer-main" data-reveal>
+            <div>
+                <p class="kicker">
+                    <span class="lang-en">Start a conversation</span>
+                    <span class="lang-zh">期待与你联系</span>
+                </p>
+                <h2 class="footer-title">
+                    <span class="lang-en">Let's make<br><em>music.</em></span>
+                    <span class="lang-zh">让音乐<br><em>开始。</em></span>
+                </h2>
+            </div>
+            <div class="footer-contact">
+                <p class="lang-en">For performances, collaborations, and professional enquiries.</p>
+                <p class="lang-zh">演出、合作与专业事务，欢迎来信。</p>
+                <a href="mailto:zixiongzhao1@gmail.com" class="email-link">zixiongzhao1@gmail.com</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">&copy; 2026 Zixiong Zhao</p>
+            <a class="back-to-top" href="#top">
+                <span class="lang-en">Back to top</span>
+                <span class="lang-zh">返回顶部</span>
+                <span aria-hidden="true">↑</span>
+            </a>
+        </div>
     </footer>
 
     <script src="/assets/site.js?v=20261101" defer></script>
