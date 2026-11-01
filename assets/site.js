@@ -106,7 +106,7 @@
         });
 
         window.addEventListener("resize", () => {
-            if (window.innerWidth > 900) {
+            if (window.innerWidth > 1040) {
                 setMenu(false);
             }
         });
